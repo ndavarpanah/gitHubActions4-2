@@ -2,16 +2,17 @@
 """
 mascot: a microservice for serving mascot data
 """
-# import json
+import json
 from flask import Flask, jsonify, abort, make_response
 
 APP = Flask(__name__)
 
 # Load the data
 # MASCOTS = json.load(open('data.json', 'r'))
-with open("data.json", "r", encoding="utf-8") as MASCOTS:
-    content = MASCOTS.read()
-
+# with open("data.json", "r", encoding="utf-8") as f:
+#    content = json.load(f)
+with open("data.json", "r", encoding="utf-8") as f:
+    MASCOTS = json.load(f)
 
 @APP.route('/', methods=['GET'])
 def get_mascots():
